@@ -25,7 +25,7 @@ app.controller('myCtrl', function ($scope) {
     // Submits the data in the top section to the controller, displays the input and coordinates if it succeeds.  Also draws the triangle in the canvas.
     $scope.submitData = function () {
         $.ajax({
-            url: "api/trianglesapi/" + $scope.rowText + "/" + $scope.columnText,
+            url: "../api/trianglesapi/" + $scope.rowText + "/" + $scope.columnText,
             type: "POST",
             dataType: 'json',
             data: {},
@@ -46,7 +46,7 @@ app.controller('myCtrl', function ($scope) {
     // Submits the data in the bottom section to the API and displays the results if it succeeds.
     $scope.submitCoords = function () {
         $.ajax({
-            url: "api/trianglesapi/" + $scope.v1x + "/" + $scope.v1y + "/" + $scope.v2x + "/" + $scope.v2y + "/" + $scope.v3x + "/" + $scope.v3y + "/",
+            url: "../api/trianglesapi/" + $scope.v1x + "/" + $scope.v1y + "/" + $scope.v2x + "/" + $scope.v2y + "/" + $scope.v3x + "/" + $scope.v3y + "/",
             type: "POST",
             dataType: 'json',
             data: {},

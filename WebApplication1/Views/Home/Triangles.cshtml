@@ -1,8 +1,8 @@
 ﻿<script src="~/Scripts/triangles.js"></script>
-<h2>Triangles - Row/Col -> Coords</h2>
+<h2>Triangles</h2>
 <hr />
 <h2>Row/Col -> Coords</h2>
-
+<p>Enter a row (A-F) and a column (1-12) to get the coordinates for the triangle</p>
 <div ng-app="myApp" ng-controller="myCtrl">
     <form ng-submit="submitData()">
         <input type="text" ng-model="rowText" ng-minlength="1" ng-maxlength="1" row-validation />
@@ -23,6 +23,7 @@
     <hr />
     <div>
         <h2>Coords -> Row/Col</h2>
+        <p>Enter vertices to get the row/column of the triangle that they represent</p>
         <form ng-submit="submitCoords()">
             <table>
                 <tbody>
@@ -59,6 +60,8 @@
             {{triangleResults}}
         </h2>
     </div>
-    <button ng-click="copyCoords()">Copy top values to bottom</button>
+    <hr />
+    <p>Click this to copy the results from the top section into the inputs in the bottom section:</p>
+    <button ng-click="copyCoords()">Copy results to bottom</button>
 </div>
 
