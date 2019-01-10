@@ -1,0 +1,64 @@
+﻿<script src="~/Scripts/triangles.js"></script>
+<h2>Triangles - Row/Col -> Coords</h2>
+<hr />
+<h2>Row/Col -> Coords</h2>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <form ng-submit="submitData()">
+        <input type="text" ng-model="rowText" ng-minlength="1" ng-maxlength="1" row-validation />
+        <input type="number" ng-model="columnText" min="1" max="12" />
+        <input type="submit" value="Get Triangle" />
+    </form>
+    <br />
+
+    <canvas id="canvas-box" class="canvas-style"></canvas>
+
+    <div class="last-results">
+        <span>{{lastQueryRow}}{{lastQueryColumn}}:</span><br />
+        <span>(x1, y1): ({{x1}}, {{y1}})</span><br />
+        <span>(x2, y2): ({{x2}}, {{y2}})</span><br />
+        <span>(x3, y3): ({{x3}}, {{y3}})</span>
+    </div>
+
+    <hr />
+    <div>
+        <h2>Coords -> Row/Col</h2>
+        <form ng-submit="submitCoords()">
+            <table>
+                <tbody>
+                    @* Yes, could be a foreach, but arguably that's overengineering.  Shrug. *@
+                    <tr>
+                        <td>V1x </td>
+                        <td><input type="number" min="0" max="60" ng-model="v1x" /></td>
+                    </tr>
+                    <tr>
+                        <td>V1y </td>
+                        <td><input type="number" min="0" max="60" ng-model="v1y" /></td>
+                    </tr>
+                    <tr>
+                        <td>V2x </td>
+                        <td><input type="number" min="0" max="60" ng-model="v2x" /></td>
+                    </tr>
+                    <tr>
+                        <td>V2y </td>
+                        <td><input type="number" min="0" max="60" ng-model="v2y" /></td>
+                    </tr>
+                    <tr>
+                        <td>V3x </td>
+                        <td><input type="number" min="0" max="60" ng-model="v3x" /></td>
+                    </tr>
+                    <tr>
+                        <td>V3y </td>
+                        <td><input type="number" min="0" max="60" ng-model="v3y" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Get Triangle" />
+        </form>
+        <h2 id="results">
+            {{triangleResults}}
+        </h2>
+    </div>
+    <button ng-click="copyCoords()">Copy top values to bottom</button>
+</div>
+
