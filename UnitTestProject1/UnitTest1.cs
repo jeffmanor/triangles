@@ -16,21 +16,29 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestServiceIntegrity()
         {
+            // Create the full set of all 72 triangles (A1...F12), run them through the service that converts row/col to coords, then
+            // take the coords and run them through the second service.  We should get the original A1...F12 string back in the end.
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 1; j < 13; j++)
                 {
-                    //Test this puppy...
+                    // Turn i into A-F
                     var row = Convert.ToChar(Convert.ToInt32('A') + i).ToString();
+
+                    // This will get us the three vertices
                     var result = TrianglesService.GetVertices(row, j);
+
+                    // This is the string we expect to get back
                     var expected = $"{row}{j}";
 
+                    // Run the vertices through the GetTriangleFromVertices service
                     var actual = TrianglesService.GetTriangleFromVertices(
                         new List<Tuple<int, int>> { new Tuple<int, int>(result.x1, result.y1),
                             new Tuple<int, int>(result.x2, result.y2),
                             new Tuple<int, int>(result.x3, result.y3)
                         });
 
+                    // We should be back where we started (A1...F12) now
                     Assert.AreEqual(expected, actual);
                 }
             }
